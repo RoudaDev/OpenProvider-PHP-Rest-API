@@ -1,11 +1,12 @@
 {
   "name": "rouda/openprovider-api",
-  "description": "OpenProvider package for php.",
+  "description": "OpenProvider API client",
   "keywords": [
     "php",
     "openprovider",
     "rouda"
   ],
+  "type": "library",
   "license": "MIT",
   "require-dev": {
     "jane-php/open-api-2": "^7.6",
