@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'directory' => 'src',
+    'namespace' => 'Rouda\OpenProviderAPI',
+    'openapi-file' => __DIR__ . '/docker-swagger.yaml',
+];

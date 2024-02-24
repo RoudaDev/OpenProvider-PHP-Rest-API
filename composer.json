@@ -1,0 +1,19 @@
+{
+    "require-dev": {
+        "jane-php/open-api-2": "^7.6",
+        "friendsofphp/php-cs-fixer": "^3.50"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "require": {
+        "jane-php/open-api-runtime": "^7.6"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": "true"
+        }
+    }
+}
