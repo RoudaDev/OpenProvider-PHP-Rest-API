@@ -18,7 +18,8 @@
     }
   },
   "require": {
-    "jane-php/open-api-runtime": "^7.6"
+    "jane-php/open-api-runtime": "^7.6",
+    "php-http/message-factory": "^1.1"
   },
   "extra": {
     "symfony": {
