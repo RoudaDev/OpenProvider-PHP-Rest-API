@@ -27,7 +27,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Rouda\\OpenProviderAPI\\": "src/"
+      "Rouda\\OpenProviderAPI\\": [
+        "api/",
+        "src/"
+      ]
     }
   }
 }
