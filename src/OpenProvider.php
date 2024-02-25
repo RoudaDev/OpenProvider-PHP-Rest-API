@@ -82,6 +82,8 @@ class OpenProvider extends Client
 
         $authenticationRegistry = new AuthenticationRegistry([new BearerAuthentication($authToken)]);
 
-        return self::create(null, [$authenticationRegistry]);
+        array_push($additionalPlugins, $authenticationRegistry);
+
+        return self::create($httpClient, $additionalPlugins, $additionalNormalizers);
     }
 }
