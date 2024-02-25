@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'directory' => 'api',
+    'directory' => 'src/Api',
     'namespace' => 'Rouda\OpenProvider\Api',
     'openapi-file' => __DIR__ . '/docker-swagger.yaml',
     'strict' => false,

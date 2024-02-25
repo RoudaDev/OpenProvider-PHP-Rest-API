@@ -47,6 +47,10 @@ class ComposerStaticInit0f52f4a6c27ca52f345b774f37f5512a
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\Console\\' => 26,
         ),
+        'R' => 
+        array (
+            'Rouda\\OpenProvider\\' => 19,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -183,6 +187,10 @@ class ComposerStaticInit0f52f4a6c27ca52f345b774f37f5512a
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Rouda\\OpenProvider\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Psr\\Log\\' => 
         array (

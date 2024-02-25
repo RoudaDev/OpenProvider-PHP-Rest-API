@@ -4,7 +4,6 @@ namespace Rouda\OpenProvider;
 
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Rouda\OpenProvider\Api\Authentication\BearerAuthentication;
-use Rouda\OpenProvider\Api\Client;
 
 use GuzzleHttp\Psr7\Uri;
 use Http\Client\Common\Plugin\AddHostPlugin;
@@ -14,6 +13,7 @@ use Http\Client\Common\PluginClientFactory;
 use Http\Client\HttpClient;
 use Http\Client\Socket\Client as SocketHttpClient;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
+use Rouda\OpenProvider\Api\Client;
 use Rouda\OpenProvider\Api\Model\AuthLoginRequest;
 
 class OpenProvider extends Client
