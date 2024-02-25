@@ -5,14 +5,6 @@ namespace Rouda\OpenProvider;
 use Jane\Component\OpenApiRuntime\Client\Plugin\AuthenticationRegistry;
 use Rouda\OpenProvider\Api\Authentication\BearerAuthentication;
 
-use GuzzleHttp\Psr7\Uri;
-use Http\Client\Common\Plugin\AddHostPlugin;
-use Http\Client\Common\Plugin\ContentLengthPlugin;
-use Http\Client\Common\Plugin\DecoderPlugin;
-use Http\Client\Common\PluginClientFactory;
-use Http\Client\HttpClient;
-use Http\Client\Socket\Client as SocketHttpClient;
-use Http\Message\MessageFactory\GuzzleMessageFactory;
 use Rouda\OpenProvider\Api\Client;
 use Rouda\OpenProvider\Api\Model\AuthLoginRequest;
 
@@ -22,23 +14,16 @@ class OpenProvider extends Client
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
     {
         if (null === $httpClient) {
-            $config = [
-                'remote_socket' => getenv('OPENPROVIDER_HOST') ?: 'https://api.openprovider.eu/',
-            ];
+            $host = getenv('OPENPROVIDER_HOST') ?: 'https://api.openprovider.eu';
 
-            $messageFactory = new GuzzleMessageFactory();
-            $socketClient = new SocketHttpClient($messageFactory, $config);
-            $host = $config['remote_socket'];
-
-            $pluginClientFactory = new PluginClientFactory();
-
-            $httpClient = $pluginClientFactory->createClient($socketClient, [
-                new ContentLengthPlugin(),
-                new DecoderPlugin(),
-                new AddHostPlugin(new Uri($host)),
-            ], [
-                'client_name' => 'rouda-open-provider-client',
-            ]);
+            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
+            $plugins = [];
+            $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri($host);
+            $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
+            if (count($additionalPlugins) > 0) {
+                $plugins = array_merge($plugins, $additionalPlugins);
+            }
+            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
 
         return parent::create($httpClient, $additionalPlugins, $additionalNormalizers);
